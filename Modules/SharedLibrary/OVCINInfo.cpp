@@ -75,11 +75,7 @@ void CLSplitString(const char *s, string& k, string& v) {
 }
 
 #ifndef WIN32
-    #ifdef __linux__
-       int CLFileSelect(const struct dirent *entry)
-    #else
-       int CLFileSelect(struct dirent *entry)
-    #endif
+    int CLFileSelect(const struct dirent *entry)
     {
         const char *selectfilter = clExtension ? clExtension : ".cin";
         int p=strlen(entry->d_name)-strlen(selectfilter);
