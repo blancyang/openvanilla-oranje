@@ -558,15 +558,18 @@ static id LVICCurrentlyActiveSender = nil;
 - (NSMenu *)menu
 {
     NSMenu *menu = [[[NSMenu alloc] init] autorelease];
-	
-	NSArray *namesAndIDs = [[LVModuleManager sharedManager] inputMethodTitlesAndModuleIDs];
-	NSEnumerator *arrayEnum = [namesAndIDs objectEnumerator];
-	NSArray *nameIDPair;
+	NSArray *namesAndIDs;
+    NSEnumerator *arrayEnum;
+    NSArray *nameIDPair;
+    /*
+	namesAndIDs = [[LVModuleManager sharedManager] inputMethodTitlesAndModuleIDs];
+	arrayEnum = [namesAndIDs objectEnumerator];
 	while (nameIDPair = [arrayEnum nextObject]) {
 		[menu addItem:[self _createInputMethodMenuItemWithIndentifer:[nameIDPair objectAtIndex:1] localizedName:[nameIDPair objectAtIndex:0]]];
 	}
 
 	[menu addItem:[NSMenuItem separatorItem]];
+     */
 
 	namesAndIDs = [[LVModuleManager sharedManager] outputFilterTitlesAndModuleIDs];
 	arrayEnum = [namesAndIDs objectEnumerator];
@@ -600,4 +603,63 @@ static id LVICCurrentlyActiveSender = nil;
 		
     return menu;
 }
+
+- (void)setValue:(id)value forTag:(long)tag client:(id)sender
+{
+    NSLog(@"setValue: %@", value);
+    
+    NSString * moudleId = Nil;
+    
+    NSString * inputMethodName = (NSString*)value;
+    
+    
+    if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Array"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMArray";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Phonetic"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMPhonetic";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Esperanto"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMEsperanto";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Tibetan"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMTibetan";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Unicode"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMUnicode";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Wubizixing"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMGeneric-wubizixing.cin";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.CangJie"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMGeneric-cj-ext.cin";
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Simplex"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMGeneric-simplex-ext.cin";
+    
+    }
+    else if ( [inputMethodName compare:@"org.openvanilla.inputmethod.Dayi"] == NSOrderedSame )
+    {
+        moudleId = @"OVIMGeneric-dayi3-patched.cin";
+    }
+
+
+    if ( moudleId )
+    {
+        [[LVModuleManager sharedManager] setPrimaryInputMethodModuleID:moudleId];
+        [self _recreateSandwich];
+    }
+    
+    
+    
+}
+
 @end

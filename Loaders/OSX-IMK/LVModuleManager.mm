@@ -500,6 +500,8 @@ NSString *LVModuleConfigChangedNotification = @"LVModuleConfigChangedNotificatio
 
 - (void)setPrimaryInputMethodModuleID:(NSString *)moduleID
 {
+    NSLog(@"setPrimaryInputMethodModuleID moduleID:%@", moduleID);
+    
 	NSString *tmp = _primaryInputMethodModuleID;
 	_primaryInputMethodModuleID = [moduleID copy];
 	[tmp release];

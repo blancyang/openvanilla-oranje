@@ -1,0 +1,23 @@
+/* 
+  InfoPlist.strings
+  OpenVanilla
+
+  Created by blanc on 12/8/5.
+
+*/
+
+org.openvanilla.inputmethod.POJ = "POJ";
+org.openvanilla.inputmethod.Array = "Array";
+org.openvanilla.inputmethod.Esperanto = "Esperanto";
+org.openvanilla.inputmethod.Generic = "Generic";
+org.openvanilla.inputmethod.Phonetic = "Phonetic";
+org.openvanilla.inputmethod.Tibetan = "Tibetan";
+org.openvanilla.inputmethod.Unicode = "Unicode";
+org.openvanilla.inputmethod.Wubizixing = "Wubizixing";
+org.openvanilla.inputmethod.CangJie = "CangJie";
+org.openvanilla.inputmethod.Simplex = "Simplex";
+org.openvanilla.inputmethod.Dayi = "Dayi";
+
+
+CFBundleName = "OpenVanilla";
+CFBundleDisplayName = "OpenVanilla";
